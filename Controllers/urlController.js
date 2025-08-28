@@ -10,7 +10,15 @@ exports.shortenUrl = async (req, res) => {
 
         if (!longUrl) return res.status(400).json({ error: "URL is required" });
 
-        let shortCode = customAlias || nanoid(8);
+        let shortCode;
+
+        if(customAlias) {
+            shortCode = customAlias;
+        } else {
+            shortCode = await nanoid();
+        }
+
+        // console.log(shortCode);
 
         // Check if alias already exists
         const existing = await Url.findOne({ shortCode });
