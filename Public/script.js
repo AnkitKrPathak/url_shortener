@@ -7,7 +7,7 @@ async function shortenUrl() {
     const customAlias = document.getElementById("customAlias").value;
 
     try {
-        const response = await fetch("http://localhost:3000/api/shorten", {
+        const response = await fetch("https://url-shortener-m6ja.onrender.com/api/shorten", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ longUrl, customAlias })
@@ -33,7 +33,7 @@ result.addEventListener("click", async (e) => {
     console.log(shortCode);
 
     try {
-        const response = await fetch(`http://localhost:3000/api/${shortCode}`, {
+        const response = await fetch(`https://url-shortener-m6ja.onrender.com/api/${shortCode}`, {
             method: "GET",
             headers: { "Accept": "application/json" }
         });
